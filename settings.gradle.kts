@@ -21,3 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "Just Doggos"
 include(":app")
+include(":core")
+include(":core:data")
+include(":core:network")
+include(":core:common")
+include(":feature")
+include(":feature:home")
