@@ -4,10 +4,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import com.rbb.model.data.DogImage
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(modifier: Modifier = Modifier) {
 
 }
 
@@ -15,14 +16,18 @@ fun HomeScreen() {
 fun DogImageList(dogImages: List<DogImage>, modifier: Modifier = Modifier) {
     LazyColumn() {
         items(items = dogImages) { dogImage ->
-
+            DogImageItem(dogImage.url)
         }
     }
 }
 
 @Composable
-fun DogItem() {
+fun DogImageItem(url: String) {
     //
 }
 
-// Add preview
+@Preview
+@Composable
+private fun DogImageItemPreview() {
+    DogImageItem("")
+}
