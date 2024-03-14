@@ -6,5 +6,5 @@ data class Breed(
     val weight: String,
     val height: String,
     val lifeSpan: String,
-    val breedGroup: String,
+    val breedGroup: String
 )
