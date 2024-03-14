@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.rbb.home"
+    namespace = "com.rbb.model"
     compileSdk = 34
 
     defaultConfig {
@@ -33,17 +33,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:model"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.compose)
     implementation(libs.material)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
