@@ -29,6 +29,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.rbb.home.HomeScreen
 import com.rbb.justdoggos.ui.theme.JustDoggosTheme
 
 class MainActivity : ComponentActivity() {
@@ -62,7 +63,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         NavHost(navController = navController, startDestination = homeTab.title) {
                             composable(homeTab.title) {
-                                Text(homeTab.title)
+                                HomeScreen()
                             }
                             composable(favoriteTab.title) {
                                 Text(favoriteTab.title)
