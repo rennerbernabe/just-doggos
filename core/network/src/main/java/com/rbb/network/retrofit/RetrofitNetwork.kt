@@ -10,11 +10,13 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://api.thedogapi.com/v1"
+
 interface RetrofitNetworkApi {
     @GET(value = "images/search")
-    suspend fun searchDogImages(): NetworkResponse<List<NetworkDogImage>>
+    suspend fun searchDogImages(): List<NetworkDogImage>
 }
 
+// Applied to functions with list parameters
 @Serializable
 data class NetworkResponse<T>(
     val data: T,
@@ -29,5 +31,5 @@ class RetrofitNetwork : NetworkDataSource {
         .create(RetrofitNetworkApi::class.java)
 
     override suspend fun searchDogImages(): List<NetworkDogImage> =
-        networkApi.searchDogImages().data
+        networkApi.searchDogImages()
 }
