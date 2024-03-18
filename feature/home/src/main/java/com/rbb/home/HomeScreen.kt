@@ -2,13 +2,16 @@ package com.rbb.home
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 @Composable
 fun HomeScreen(
@@ -18,7 +21,6 @@ fun HomeScreen(
 
     val dogImagesState by viewModel.dogImagesState.collectAsStateWithLifecycle()
 
-    Text("home")
     DogImageList(dogImagesState)
 }
 
@@ -44,7 +46,15 @@ fun DogImageList(
 
 @Composable
 fun DogImageItem(url: String) {
-    Text(text = url)
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(url)
+            .crossfade(true)
+            .build(),
+//        placeholder = painterResource(R.drawable.placeholder), TODO add placeholder
+        contentDescription = "Dog image",
+        contentScale = ContentScale.Crop
+    )
 }
 
 @Preview
