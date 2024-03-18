@@ -1,6 +1,6 @@
 package com.rbb.data.repository
 
-import com.rbb.network.retrofit.RetrofitNetworkApi
+import com.rbb.network.retrofit.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,8 +11,8 @@ import dagger.hilt.components.SingletonComponent
 object DogImagesModule {
     @Provides
     fun provideDogImagesRepository(
-        retrofitNetworkApi: RetrofitNetworkApi
+        apiService: ApiService
     ): DogImagesRepository {
-        return DogImagesRepositoryImpl(retrofitNetworkApi)
+        return DogImagesRepositoryImpl(apiService)
     }
 }
