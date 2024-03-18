@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.coil.kt.compose)
     implementation(libs.hilt.android)
 
     implementation(platform(libs.androidx.compose.bom))
