@@ -5,9 +5,11 @@ import com.rbb.network.NetworkDataSource
 import com.rbb.network.model.NetworkDogImage
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import okhttp3.Call
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.http.GET
+import javax.inject.Inject
 
 private const val BASE_URL = "https://api.thedogapi.com/v1"
 
@@ -22,11 +24,17 @@ data class NetworkResponse<T>(
     val data: T,
 )
 
-class RetrofitNetwork : NetworkDataSource {
+class RetrofitNetwork @Inject constructor(
+    networkJson: Json,
+    okHttpClient: dagger.Lazy<Call.Factory>,
+): NetworkDataSource {
 
     private val networkApi = Retrofit.Builder()
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(BASE_URL)
+        // We use callFactory lambda here with dagger.Lazy<Call.Factory>
+        // to prevent initializing OkHttp on the main thread.
+        .callFactory { okHttpClient.get().newCall(it) }
+        .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType()))
         .build()
         .create(RetrofitNetworkApi::class.java)
 
