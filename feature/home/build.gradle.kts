@@ -7,6 +7,11 @@ android {
     namespace = "com.rbb.home"
     compileSdk = 34
 
+    composeOptions {
+        // Replace with libs.findVersion("androidxComposeCompiler").get().toString()
+        kotlinCompilerExtensionVersion = "1.5.10"
+    }
+
     defaultConfig {
         minSdk = 24
 

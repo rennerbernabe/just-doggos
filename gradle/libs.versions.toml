@@ -1,6 +1,7 @@
 [versions]
 appcompat = "1.6.1"
 activityCompose = "1.8.2"
+androidxComposeCompiler = "1.5.8"
 androidGradlePlugin = "8.3.0"
 androidxHiltNavigationCompose = "1.2.0"
 androidxNavigation = "2.7.7"
@@ -10,7 +11,7 @@ espressoCore = "3.5.1"
 hilt = "2.51"
 junit = "4.13.2"
 junitVersion = "1.1.5"
-kotlin = "1.9.0"
+kotlin = "1.9.22"
 kotlinxSerializationJson = "1.6.3"
 ksp = "1.9.22-1.0.18"
 lifecycleRuntimeKtx = "2.7.0"
@@ -56,6 +57,7 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]

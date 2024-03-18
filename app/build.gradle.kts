@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.ksp)
 }
@@ -7,6 +8,11 @@ plugins {
 android {
     namespace = "com.rbb.justdoggos"
     compileSdk = 34
+
+    composeOptions {
+        // Replace with libs.findVersion("androidxComposeCompiler").get().toString()
+        kotlinCompilerExtensionVersion = "1.5.10"
+    }
 
     defaultConfig {
         applicationId = "com.rbb.justdoggos"
@@ -41,7 +47,8 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        // Replace with libs.findVersion("androidxComposeCompiler").get().toString()
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -57,6 +64,10 @@ dependencies {
     api(libs.androidx.compose.runtime)
     api(libs.androidx.compose.ui.util)
 
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+
     implementation(project(":feature:home"))
 
     implementation(libs.androidx.core.ktx)
@@ -69,6 +80,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.hilt.android)
 
     ksp(libs.hilt.compiler)
 
