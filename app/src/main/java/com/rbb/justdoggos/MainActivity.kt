@@ -31,7 +31,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.rbb.home.HomeScreen
 import com.rbb.justdoggos.ui.theme.JustDoggosTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,9 +53,6 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             JustDoggosTheme {
-                LazyColumn {
-
-                }
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
