@@ -1,4 +1,4 @@
-package com.rbb.home
+package com.rbb.feed
 
 import com.rbb.model.data.DogImage
 

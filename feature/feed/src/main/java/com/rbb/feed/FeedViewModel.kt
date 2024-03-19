@@ -1,4 +1,4 @@
-package com.rbb.home
+package com.rbb.feed
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class FeedViewModel @Inject constructor(
     private val dogImagesRepository: DogImagesRepository
 ) : ViewModel() {
 
