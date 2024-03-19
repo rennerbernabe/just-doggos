@@ -2,6 +2,7 @@ package com.rbb.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
@@ -55,10 +56,11 @@ fun HomeScreen() {
             bottomBar = {
                 TabView(tabBarItems, navController)
             }
-        ) {
+        ) { padding ->
             NavHost(
                 navController = navController,
-                startDestination = "feed_route"
+                startDestination = "feed_route",
+                modifier = Modifier.padding(bottom = padding.calculateBottomPadding())
             ) {
                 composable("feed_route") {
                     FeedScreen()
