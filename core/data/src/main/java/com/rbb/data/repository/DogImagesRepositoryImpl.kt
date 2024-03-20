@@ -1,5 +1,6 @@
 package com.rbb.data.repository
 
+import com.rbb.model.data.Breed
 import com.rbb.model.data.DogImage
 import com.rbb.network.model.asExternalModel
 import com.rbb.network.retrofit.ApiService
@@ -13,6 +14,11 @@ class DogImagesRepositoryImpl @Inject constructor(
 
     override fun searchDogImages(): Flow<List<DogImage>> = flow {
         val data = apiService.searchDogImages()
+        emit(data.asExternalModel())
+    }
+
+    override fun getDogBreeds(): Flow<List<Breed>> = flow {
+        val data = apiService.getDogBreeds()
         emit(data.asExternalModel())
     }
 }

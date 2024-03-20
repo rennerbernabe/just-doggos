@@ -32,4 +32,14 @@ class FeedViewModel @Inject constructor(
                 started = SharingStarted.WhileSubscribed(5_000),
                 initialValue = DogImagesUiState.Loading,
             )
+
+    // TODO move to dog breeds repository
+    val breedsState: StateFlow<BreedsUiState> =
+        dogImagesRepository.getDogBreeds()
+            .map(BreedsUiState::Success)
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = BreedsUiState.Loading,
+            )
 }
