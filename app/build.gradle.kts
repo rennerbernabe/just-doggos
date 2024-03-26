@@ -83,8 +83,10 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.hilt.android)
     implementation(libs.lottie.compose)
+    implementation(libs.room.ktx)
 
     ksp(libs.hilt.compiler)
+    ksp(libs.room.compiler)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
