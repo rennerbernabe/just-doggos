@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable(MainNavigation.ImageDetails.route + "/{id}") { backStackEntry ->
-                        ImageDetailsScreen(id = backStackEntry.arguments?.getString("id") ?: "")
+                        ImageDetailsScreen()
                     }
                 }
             }

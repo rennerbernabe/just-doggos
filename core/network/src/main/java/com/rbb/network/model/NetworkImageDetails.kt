@@ -8,8 +8,8 @@ data class NetworkImageDetails(
     val id: String,
     val url: String,
     val breeds: List<NetworkBreed>,
-    val width: String,
-    val height: String,
+    val width: Int,
+    val height: Int,
 )
 
 fun NetworkImageDetails.asExternalModel() = ImageDetails(

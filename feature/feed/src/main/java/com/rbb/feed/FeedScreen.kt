@@ -92,7 +92,6 @@ fun DogImageItem(
             .aspectRatio((image.width.toFloat() / image.height.toFloat()))
             .clip(RoundedCornerShape(16.dp))
             .clickable { onClick(image.id) }
-
     )
 }
 
