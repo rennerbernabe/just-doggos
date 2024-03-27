@@ -20,7 +20,7 @@ class FeedViewModel @Inject constructor(
             .map(DogImagesUiState::Success)
             .stateIn(
                 scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5_000),
+                started = SharingStarted.Eagerly,
                 initialValue = DogImagesUiState.Loading,
             )
 }
