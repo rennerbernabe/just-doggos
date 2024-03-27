@@ -19,19 +19,17 @@ class BreedsRepositoryImpl @Inject constructor(
 ) : BreedsRepository {
 
     override suspend fun getBreeds(): Flow<List<Breed>> {
-        // Read local db
         val breeds = breedDao.getBreedEntities()
             .map { it.map(BreedEntity::asExternalModel) }
         val data = breeds.firstOrNull()
-        return if (data != null) {
-            breeds
-        } else {
-            // Get remote data
+        return if (data.isNullOrEmpty()) {
             flow {
                 val networkBreeds = apiService.getBreeds()
                 val breedEntities = networkBreeds.map(NetworkBreed::asEntity)
                 breedDao.upsertBreeds(breedEntities = breedEntities)
             }
+        } else {
+            breeds
         }
     }
 }

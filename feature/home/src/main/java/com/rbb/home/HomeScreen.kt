@@ -33,7 +33,10 @@ import com.rbb.feed.FeedScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    viewModel: HomeViewModel = hiltViewModel()
+) {
+
     val homeTab = TabBarItem(
         title = stringResource(R.string.feature_home_feed),
         selectedIcon = Icons.Filled.Home,
