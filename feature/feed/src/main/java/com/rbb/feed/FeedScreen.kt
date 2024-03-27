@@ -31,6 +31,7 @@ import com.rbb.model.data.DogImage
 fun FeedScreen(
     viewModel: FeedViewModel = hiltViewModel()
 ) {
+
     val dogImagesState by viewModel.dogImagesState.collectAsStateWithLifecycle()
     DogImageList(dogImagesState)
 }

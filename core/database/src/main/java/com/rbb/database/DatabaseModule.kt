@@ -19,6 +19,6 @@ internal object DatabaseModule {
     ): JustDoggosDatabase = Room.databaseBuilder(
         context,
         JustDoggosDatabase::class.java,
-        "just-doggos-database"
+        "just-doggos-database",
     ).build()
 }

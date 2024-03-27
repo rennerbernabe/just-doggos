@@ -16,9 +16,4 @@ class DogImagesRepositoryImpl @Inject constructor(
         val data = apiService.searchDogImages()
         emit(data.asExternalModel())
     }
-
-    override fun getDogBreeds(): Flow<List<Breed>> = flow {
-        val data = apiService.getDogBreeds()
-        emit(data.asExternalModel())
-    }
 }

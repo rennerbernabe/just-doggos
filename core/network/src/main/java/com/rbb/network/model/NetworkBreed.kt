@@ -1,5 +1,6 @@
 package com.rbb.network.model
 
+import com.rbb.database.model.BreedEntity
 import com.rbb.model.data.Breed
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -40,4 +41,17 @@ fun NetworkBreed.asExternalModel() = Breed(
     referenceImageId = referenceImageId,
 )
 
-fun List<NetworkBreed>.asExternalModel() = map { it.asExternalModel() }
+fun NetworkBreed.asEntity() = BreedEntity(
+    id = id,
+    name = name,
+    description = description.orEmpty(),
+    countryCode = countryCode.orEmpty(),
+    weight = weight.metric,
+    height = height.metric,
+    bredFor = bredFor.orEmpty(),
+    breedGroup = breedGroup.orEmpty(),
+    lifeSpan = lifeSpan,
+    temperament = temperament.orEmpty(),
+    origin = origin,
+    referenceImageId = referenceImageId,
+)

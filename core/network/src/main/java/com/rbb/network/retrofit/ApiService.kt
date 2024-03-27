@@ -13,5 +13,5 @@ interface ApiService {
     ): List<NetworkDogImage>
 
     @GET("breeds")
-    suspend fun getDogBreeds(): List<NetworkBreed>
+    suspend fun getBreeds(): List<NetworkBreed>
 }

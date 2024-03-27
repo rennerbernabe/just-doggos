@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 android {
@@ -37,6 +38,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
@@ -47,8 +51,10 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.material)
     implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
 
     ksp(libs.hilt.compiler)
+    ksp(libs.room.compiler)
     kspTest(libs.hilt.compiler)
 
     testImplementation(libs.junit)

@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":core:database"))
     implementation(project(":core:model"))
     implementation(project(":core:network"))
 
@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.material)
 
     ksp(libs.hilt.compiler)
+
     kspTest(libs.hilt.compiler)
 
     testImplementation(libs.junit)

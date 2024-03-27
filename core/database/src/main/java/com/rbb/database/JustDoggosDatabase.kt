@@ -10,8 +10,8 @@ import com.rbb.database.model.BreedEntity
         BreedEntity::class,
     ],
     version = 1,
+    exportSchema = false,
 )
-
 internal abstract class JustDoggosDatabase : RoomDatabase() {
     abstract fun breedDao(): BreedDao
 }

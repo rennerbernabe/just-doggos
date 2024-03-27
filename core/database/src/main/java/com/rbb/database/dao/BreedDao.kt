@@ -28,5 +28,5 @@ interface BreedDao {
     fun getBreedEntities(ids: Set<String>): Flow<List<BreedEntity>>
 
     @Upsert
-    suspend fun upsertBreeds(entities: List<BreedEntity>)
+    suspend fun upsertBreeds(breedEntities: List<BreedEntity>)
 }

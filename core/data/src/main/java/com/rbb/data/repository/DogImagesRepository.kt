@@ -6,6 +6,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface DogImagesRepository {
     fun searchDogImages(): Flow<List<DogImage>>
-
-    fun getDogBreeds(): Flow<List<Breed>>
 }
