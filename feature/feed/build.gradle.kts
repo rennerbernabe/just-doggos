@@ -53,8 +53,9 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:network"))
 
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.coil.kt.compose)

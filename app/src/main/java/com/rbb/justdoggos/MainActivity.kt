@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.rbb.feed.DetailsScreen
+import com.rbb.feed.ImageDetailsScreen
 import com.rbb.home.HomeScreen
 import com.rbb.justdoggos.ui.theme.JustDoggosTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,16 +22,18 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = MainNavigation.Splash.route
                 ) {
-                    composable(route = MainNavigation.Splash.route) {
+                    composable(MainNavigation.Splash.route) {
                         SplashScreen(navController)
                     }
-                    composable(route = MainNavigation.Home.route) {
+                    composable(MainNavigation.Home.route) {
                         HomeScreen(
-                            onClick = { navController.navigate(MainNavigation.ImageDetails.route) }
+                            onClick = { id ->
+                                navController.navigate(MainNavigation.ImageDetails.route + "/$id")
+                            }
                         )
                     }
-                    composable(MainNavigation.ImageDetails.route) {
-                        DetailsScreen()
+                    composable(MainNavigation.ImageDetails.route + "/{id}") { backStackEntry ->
+                        ImageDetailsScreen(id = backStackEntry.arguments?.getString("id") ?: "")
                     }
                 }
             }

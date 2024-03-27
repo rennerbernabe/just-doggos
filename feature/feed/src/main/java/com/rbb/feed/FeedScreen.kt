@@ -1,7 +1,6 @@
 package com.rbb.feed
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
-import android.graphics.drawable.Drawable
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,12 +25,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.rbb.model.data.DogImage
+import com.rbb.model.data.Image
 
 @Composable
 fun FeedScreen(
     viewModel: FeedViewModel = hiltViewModel(),
-    onClick: () -> Unit
+    onClick: (id: String) -> Unit
 ) {
 
     val imagesUiState by viewModel.imagesUiState.collectAsStateWithLifecycle()
@@ -42,7 +41,7 @@ fun FeedScreen(
 fun DogImageList(
     imagesUiState: DogImagesUiState,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: (id: String) -> Unit
 ) {
     when (imagesUiState) {
         DogImagesUiState.Loading -> Unit
@@ -76,9 +75,9 @@ fun DogImageList(
 
 @Composable
 fun DogImageItem(
-    image: DogImage,
+    image: Image,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: (id: String) -> Unit
 ) {
     SubcomposeAsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
@@ -92,7 +91,7 @@ fun DogImageItem(
             .wrapContentHeight()
             .aspectRatio((image.width.toFloat() / image.height.toFloat()))
             .clip(RoundedCornerShape(16.dp))
-            .clickable { onClick() }
+            .clickable { onClick(image.id) }
 
     )
 }

@@ -1,6 +1,6 @@
 package com.rbb.network.model
 
-import com.rbb.model.data.DogImage
+import com.rbb.model.data.Image
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -11,7 +11,7 @@ data class NetworkDogImage(
     val height: Int,
 )
 
-fun NetworkDogImage.asExternalModel() = DogImage(
+fun NetworkDogImage.asExternalModel() = Image(
     id = id,
     url = url,
     width = width,

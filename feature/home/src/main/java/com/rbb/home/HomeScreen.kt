@@ -35,7 +35,7 @@ import com.rbb.feed.FeedScreen
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    onClick: () -> Unit
+    onClick: (id: String) -> Unit
 ) {
 
     val homeTab = TabBarItem(

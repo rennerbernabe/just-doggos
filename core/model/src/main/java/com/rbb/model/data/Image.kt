@@ -1,6 +1,6 @@
 package com.rbb.model.data
 
-data class DogImage(
+data class Image(
     val id: String,
     val url: String,
     val width: Int,

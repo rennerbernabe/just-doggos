@@ -1,8 +1,8 @@
 package com.rbb.feed
 
-import com.rbb.model.data.DogImage
+import com.rbb.model.data.Image
 
 sealed interface DogImagesUiState {
-    data class Success(val dogImages: List<DogImage>) : DogImagesUiState
+    data class Success(val dogImages: List<Image>) : DogImagesUiState
     data object Loading : DogImagesUiState
 }

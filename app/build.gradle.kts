@@ -69,6 +69,7 @@ dependencies {
     compileOnly(libs.ksp.gradlePlugin)
 
     implementation(project(":core:database"))
+    implementation(project(":core:model"))
     implementation(project(":feature:feed"))
     implementation(project(":feature:home"))
 
