@@ -1,6 +1,8 @@
 package com.rbb.feed
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
+import android.graphics.drawable.Drawable
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
@@ -11,7 +13,6 @@ import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -29,19 +30,21 @@ import com.rbb.model.data.DogImage
 
 @Composable
 fun FeedScreen(
-    viewModel: FeedViewModel = hiltViewModel()
+    viewModel: FeedViewModel = hiltViewModel(),
+    onClick: () -> Unit
 ) {
 
-    val dogImagesState by viewModel.dogImagesState.collectAsStateWithLifecycle()
-    DogImageList(dogImagesState)
+    val imagesUiState by viewModel.imagesUiState.collectAsStateWithLifecycle()
+    DogImageList(imagesUiState = imagesUiState, onClick = onClick)
 }
 
 @Composable
 fun DogImageList(
-    dogImagesState: DogImagesUiState,
-    modifier: Modifier = Modifier
+    imagesUiState: DogImagesUiState,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
-    when (dogImagesState) {
+    when (imagesUiState) {
         DogImagesUiState.Loading -> Unit
         is DogImagesUiState.Success -> {
             val cellConfiguration =
@@ -57,10 +60,14 @@ fun DogImageList(
                 modifier = Modifier.fillMaxSize()
             ) {
                 items(
-                    items = dogImagesState.dogImages,
-                    key = { dogImage -> dogImage.id }
-                ) { dogImage ->
-                    DogImageItem(dogImage, modifier)
+                    items = imagesUiState.dogImages,
+                    key = { image -> image.id }
+                ) { image ->
+                    DogImageItem(
+                        image = image,
+                        modifier = modifier,
+                        onClick = onClick
+                    )
                 }
             }
         }
@@ -68,10 +75,14 @@ fun DogImageList(
 }
 
 @Composable
-fun DogImageItem(dogImage: DogImage, modifier: Modifier) {
+fun DogImageItem(
+    image: DogImage,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     SubcomposeAsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
-            .data(dogImage.url)
+            .data(image.url)
             .crossfade(true)
             .build(),
         contentScale = ContentScale.FillWidth,
@@ -79,8 +90,10 @@ fun DogImageItem(dogImage: DogImage, modifier: Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .aspectRatio((dogImage.width.toFloat() / dogImage.height.toFloat()))
+            .aspectRatio((image.width.toFloat() / image.height.toFloat()))
             .clip(RoundedCornerShape(16.dp))
+            .clickable { onClick() }
+
     )
 }
 

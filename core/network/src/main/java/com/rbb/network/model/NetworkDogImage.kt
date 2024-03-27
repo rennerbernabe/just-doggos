@@ -8,14 +8,14 @@ data class NetworkDogImage(
     val id: String,
     val url: String,
     val width: Int,
-    val height: Int
+    val height: Int,
 )
 
 fun NetworkDogImage.asExternalModel() = DogImage(
     id = id,
     url = url,
     width = width,
-    height = height
+    height = height,
 )
 
 fun List<NetworkDogImage>.asExternalModel() = map { it.asExternalModel() }

@@ -69,6 +69,7 @@ dependencies {
     compileOnly(libs.ksp.gradlePlugin)
 
     implementation(project(":core:database"))
+    implementation(project(":feature:feed"))
     implementation(project(":feature:home"))
 
     implementation(libs.androidx.activity.compose)
@@ -81,6 +82,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.kt.compose)
     implementation(libs.hilt.android)
     implementation(libs.lottie.compose)
 

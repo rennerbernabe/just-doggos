@@ -34,7 +34,8 @@ import com.rbb.feed.FeedScreen
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    onClick: () -> Unit
 ) {
 
     val homeTab = TabBarItem(
@@ -63,13 +64,13 @@ fun HomeScreen(
         ) { padding ->
             NavHost(
                 navController = navController,
-                startDestination = "feed_route",
+                startDestination = HomeNavigation.Feed.route,
                 modifier = Modifier.padding(bottom = padding.calculateBottomPadding())
             ) {
-                composable("feed_route") {
-                    FeedScreen()
+                composable(HomeNavigation.Feed.route) {
+                    FeedScreen(onClick = onClick)
                 }
-                composable("favorite_route") {
+                composable(HomeNavigation.Favorite.route) {
                     Text(favoriteTab.title)
                 }
             }

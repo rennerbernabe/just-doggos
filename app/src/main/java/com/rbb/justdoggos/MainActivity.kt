@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.rbb.feed.DetailsScreen
 import com.rbb.home.HomeScreen
 import com.rbb.justdoggos.ui.theme.JustDoggosTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,13 +20,18 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = "splash_route"
+                    startDestination = MainNavigation.Splash.route
                 ) {
-                    composable(route = "splash_route") {
+                    composable(route = MainNavigation.Splash.route) {
                         SplashScreen(navController)
                     }
-                    composable(route = "home_route") {
-                        HomeScreen()
+                    composable(route = MainNavigation.Home.route) {
+                        HomeScreen(
+                            onClick = { navController.navigate(MainNavigation.ImageDetails.route) }
+                        )
+                    }
+                    composable(MainNavigation.ImageDetails.route) {
+                        DetailsScreen()
                     }
                 }
             }
